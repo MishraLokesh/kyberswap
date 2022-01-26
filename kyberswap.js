@@ -29,36 +29,28 @@ const main = async () => {
   console.log(res)
 
 
-// Import csv-writer
-var createCsvWriter = csvwriter.createObjectCsvWriter
+  var createCsvWriter = csvwriter.createObjectCsvWriter
 
-// Passing the column names intp the module
-const csvWriter = createCsvWriter({
+  const csvWriter = createCsvWriter({
 
-// Output csv file name is data.csv
-path: 'data.csv',
-header: [
-	// Title of the columns (column_names)
-	// {id: 'id', title: 'ID'},
-	{id: 'symbol', title: 'SYMBOL'},
-	{id: 'name', title: 'NAME'},
-	{id: 'derivedETH', title: 'PRICE'},
-]
-});
+  path: 'data.csv',
+  header: [
+    // {id: 'id', title: 'ID'},
+    {id: 'symbol', title: 'SYMBOL'},
+    {id: 'name', title: 'NAME'},
+    {id: 'derivedETH', title: 'PRICE'},
+  ]
+  });
 
-// Values for each column through an array
-
-for (var key in res) {
-  if (res[0].hasOwnProperty(key)) {
-      console.log(key + " -> " + res[key]);
+  for (var key in res) {
+    if (res[0].hasOwnProperty(key)) {
+        console.log(key + " -> " + res[key]);
+    }
   }
-}
 
-// Writerecords function to add records
-csvWriter
-.writeRecords(res)
-.then(()=> console.log('Data uploaded into csv successfully'));
-
+  csvWriter
+  .writeRecords(res)
+  .then(()=> console.log('Data uploaded into csv successfully'));
 
 }
 
